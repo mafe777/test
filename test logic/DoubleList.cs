@@ -68,6 +68,7 @@ namespace test_logic
             }
             return BrandList;
         }
+
         public DoubleList<Cars> GetYear(int lower, int upper)
         {
             var YearList = new DoubleList<Cars>();
@@ -99,30 +100,31 @@ namespace test_logic
             }
             return PriceList;
         }
-        public Cars[] GetMinMax(DoubleList<Cars> list)
+        public Cars[] GetMinMaxPrice(DoubleList<Cars> list)
         {
-            var mixMax = new Cars[2];
+            var minMax = new Cars[2];
             var pointer = _first;
-            Cars mix = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars));
-            Cars max = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars));
+            Cars min = (Cars)Convert.ChangeType(pointer!.Data, typeof(Cars))!;
+            Cars max = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars))!;
             pointer = pointer.Next;
             while (pointer != null)
             {
-                Cars cars = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars));
+                Cars cars = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars))!;
                 if (cars.Price > max.Price)
                 {
                     max = cars;
                 }
-                else if (cars.Price < mix.Price)
+                else if (cars.Price < min.Price)
                 {
-                    mix = cars;
+                    min = cars;
                 }
                 pointer = pointer.Next;
             }
-            mixMax[0] = mix;
-            mixMax[1] = max;
-            return mixMax;
+            minMax[0] = min;
+            minMax[1] = max;
+            return minMax;
         }
+
 
 
     }
