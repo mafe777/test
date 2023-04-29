@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace test_logic
 {
-    internal class DoubleNode<T>
-    {
-        public T? Data { get; set; }
-        public DoubleNode<T>? Left { get; set; } 
-        public DoubleNode<T>? Right { get; set; }
-        public DoubleNode(T data)
+   
+        public class DoubleNode<T>
         {
-            Data = data;
-            Left = null;
-            Right = null;
+            public T? Data { get; set; }
 
+            public DoubleNode<T>? Previous { get; set; }
+
+            public DoubleNode<T>? Next { get; set; }
+
+            public DoubleNode(T data)
+            {
+                Data = data;
+                Previous = null;
+                Next = null;
+            }
         }
-
-        
-    }
+    
 }
