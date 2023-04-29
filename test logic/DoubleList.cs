@@ -100,6 +100,7 @@ namespace test_logic
             }
             return PriceList;
         }
+
         public Cars[] GetMinMaxPrice(DoubleList<Cars> list)
         {
             var minMax = new Cars[2];
@@ -123,6 +124,86 @@ namespace test_logic
             minMax[0] = min;
             minMax[1] = max;
             return minMax;
+        }
+
+        public DoubleList<Cars> GetSeveralFilters(string brand, string model, string color, int minimumYear, int maximumYear)
+        {
+            var sfList = new DoubleList<Cars>();
+            var pointer = _first;
+            while (pointer != null)
+            {
+                Cars car = (Cars)Convert.ChangeType(pointer.Data, typeof(Cars))!;
+                if (brand.Equals("*"))
+                {
+                    if (model.Equals("*"))
+                    {
+                        if (color.Equals("*"))
+                        {
+                            if (car.Year >= minimumYear && car.Year <= maximumYear)
+                            {
+                                sfList.Add(car);
+                            }
+                        }
+                        else
+                        {
+                            if (car.Color!.Equals(color) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                            {
+                                sfList.Add(car);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (color.Equals("*"))
+                        {
+                            if (car.Model!.Equals(model) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                            {
+                                sfList.Add(car);
+                            }
+                        }
+                        else
+                        {
+                            if (car.Model!.Equals(model) && car.Color.Equals(color) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                            {
+                                sfList.Add(car);
+                            }
+                        }
+                    }
+                }
+                else if (model.Equals("*"))
+                {
+                    if (color.Equals("*"))
+                    {
+                        if (car.Brand!.Equals(brand) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                        {
+                            sfList.Add(car);
+                        }
+                    }
+                    else
+                    {
+                        if (car.Brand!.Equals(brand) && car.Color!.Equals(color) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                        {
+                            sfList.Add(car);
+                        }
+                    }
+                }
+                else if (color.Equals("*"))
+                {
+                    if (car.Brand!.Equals(brand) && car.Model!.Equals(model) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                    {
+                        sfList.Add(car);
+                    }
+                }
+                else
+                {
+                    if (car.Brand!.Equals(brand) && car.Model!.Equals(model) && car.Color.Equals(color) && (car.Year >= minimumYear && car.Year <= maximumYear))
+                    {
+                        sfList.Add(car);
+                    }
+                }
+                pointer = pointer.Next;
+            }
+            return sfList;
         }
 
 
