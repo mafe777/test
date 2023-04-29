@@ -21,13 +21,13 @@ Console.WriteLine("");
 Console.WriteLine(cars);
 
 Console.WriteLine("»» Choose a car by the brand you want...");
-Console.WriteLine(cars.GetBrand("Jeep"));
+Console.WriteLine(cars.GetBrand("chevrolet"));
 
 Console.WriteLine("»» Choose a car by typing two years they were made...");
-Console.WriteLine(cars.GetYear(2018, 2020));
+Console.WriteLine(cars.GetYear(2018, 2019));
 
 Console.WriteLine("»» Choose a car by the price...");
-Console.WriteLine(cars.GetPrice(60000000, 220000000));
+Console.WriteLine(cars.GetPrice(60000000, 140000000));
 
 var minMax = cars.GetMinMaxPrice(cars);
 Console.WriteLine("»» Car with lower price...");
@@ -38,6 +38,6 @@ Console.WriteLine(minMax[1]);
 Console.WriteLine("   ");
 
 Console.WriteLine("»» Choose a Car With Different Filtters");
-Console.WriteLine(cars.GetSeveralFilters("*", "*", "white", 2010, 2020));
+Console.WriteLine(cars.GetSeveralFilters("*", "*", "*", 2010, 2020));
  
 
